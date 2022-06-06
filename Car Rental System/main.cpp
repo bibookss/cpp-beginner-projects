@@ -25,11 +25,14 @@ struct Car {
     int ratePerKm;
 };
 
+// --------------------------------------------------------
 // Customer Side
-void customerRegister(Customer);
-void customerLogin(Customer);
+void customerRegister();
+int customerCount();
+void customerLogin();
 void customerForgot(Customer);
 void customerRent(Customer, Car);
+bool customerCheck(Customer);
 
 // Admin Side
 void addCar(Car);
@@ -39,3 +42,24 @@ void adminChangeCredentials(Admin);
 
 // Car Side
 void carRate(Car);
+// --------------------------------------------------------
+
+void customerRegister(){
+    Customer customer;
+    cout << "New Customer Registration\n";
+    
+    cout << "Enter your name: "; 
+    getline(cin, customer.name);
+    
+    cout << "Enter your age: ";
+    cin >> customer.age;
+
+    do{
+        cout << "Username: ";
+        cin >> customer.accUsername;
+        
+        cout << "Password: ";
+        cin >> customer.accPassword;
+    } while(customerCheck(customer));
+
+}
